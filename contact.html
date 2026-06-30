@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Easy Fit Interiors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/Logo.jpg">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/Logo.jpg" alt="Easy Fit Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-container">
+        <div class="contact-info">
+            <span class="eyebrow">Get in Touch</span>
+            <h1>Start with the right conversation.</h1>
+            <p class="lead">Ready to elevate your space? Contact our specialists directly to discuss your custom kitchen, bedroom, or bathroom project.</p>
+            
+            <div class="contact-card">
+                <h3>Ahmed Jamal</h3>
+                <p>Direct Line: <a href="tel:0688690901">068 869 0901</a></p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Mohammed Yusuf Jamal</h3>
+                <p>Direct Line: <a href="tel:0606328016">060 632 8016</a></p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient">Message</label>
+                    <select id="recipient" class="form-control" required>
+                        <option value="" disabled selected>Choose who to message...</option>
+                        <option value="27688690901">Ahmed Jamal</option>
+                        <option value="27606328016">Mohammed Yusuf Jamal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Required</label>
+                    <select id="service" class="form-control" required>
+                        <option value="" disabled selected>Select a service...</option>
+                        <option value="kitchens">Custom Kitchens</option>
+                        <option value="bedrooms">Custom Bedrooms</option>
+                        <option value="stone">Stone Installation</option>
+                        <option value="drywalling">Drywalling</option>
+                        <option value="bathrooms">Bathroom Renovations</option>
+                        <option value="other">Other Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" class="form-control" placeholder="Tell us a little about your project..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2018 Easy Fit Interiors. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const contactForm = document.querySelector('.contact-form form');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const recipient = document.getElementById('recipient').value;
+            const service = document.getElementById('service');
+            const serviceText = service.options[service.selectedIndex].text;
+            const message = document.getElementById('message').value.trim();
+
+            const whatsappMessage = [
+                'Hello, I would like to enquire about Easy Fit Interiors.',
+                '',
+                'Name: ' + name,
+                'Phone: ' + phone,
+                'Service: ' + serviceText,
+                'Project details: ' + message
+            ].join('\n');
+
+            window.open('https://wa.me/' + recipient + '?text=' + encodeURIComponent(whatsappMessage), '_blank');
+        });
+    </script>
+
+</body>
+</html>
